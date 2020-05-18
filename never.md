@@ -4,6 +4,8 @@
 
 ```ts
 function generateError(message: string, code: number): never {
-  generateError('Internal server error', 500);
+  throw { message: message, code };
 }
+
+generateError("Internal server error", 500);
 ```
