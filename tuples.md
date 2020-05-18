@@ -1,4 +1,4 @@
-## Tuples
+## Tuples Types
 
 Tuples are types that reinforces elements order/length and types. See the following example
 
