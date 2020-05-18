@@ -15,7 +15,6 @@ function combineInputs(
   }
 
   result = input1 + input2;
-
   return result;
 }
 ```
