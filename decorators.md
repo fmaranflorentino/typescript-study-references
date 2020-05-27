@@ -91,3 +91,55 @@ class Product {
   }
 }
 ```
+
+## Accessor & Parameter Decorators
+
+```ts
+function Log(target: any, name: string, descriptor: PropertyDescriptor) {
+  console.log("Accessor");
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+}
+
+function Log2(
+  target: any,
+  name: string | Symbol,
+  descriptor: PropertyDescriptor
+) {
+  console.log("Method");
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+}
+
+function Log3(
+  target: any,
+  name: string | Symbol,
+  position: number
+) {
+  console.log("parameter");
+  console.log(target);
+  console.log(name);
+  console.log(position);
+}
+
+class Product {
+  title: string;
+
+  private _price: number;
+
+  constructor(public t: string, private p: number) {
+    this.title = t;
+    this._price = p;
+  }
+
+  @Log
+  set price(val: number) {
+    this._price = val;
+  }
+
+  @Log2 getTax(@Log3 taxValue: number) {}
+
+}
+```
