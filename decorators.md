@@ -113,11 +113,7 @@ function Log2(
   console.log(descriptor);
 }
 
-function Log3(
-  target: any,
-  name: string | Symbol,
-  position: number
-) {
+function Log3(target: any, name: string | Symbol, position: number) {
   console.log("parameter");
   console.log(target);
   console.log(name);
@@ -140,10 +136,31 @@ class Product {
   }
 
   @Log2 getTax(@Log3 taxValue: number) {}
-
 }
 ```
 
-## When do decorators execute ? 
+## When do decorators execute ?
 
-It not executes on runtime it executes when it's `defined` and decorators are not event listners . 
+It not executes on runtime it executes when it's `defined` and decorators are not event listners.
+
+### Returning and changing a Class in a Class Decorator
+
+```ts
+function withTemplate(template: string, target: string) {
+  return function<T extends { new (...args: any[]): {name: string} }> (
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        const targetElement = document.getElementById(target)!;
+        targetElement.innterHTML = template;
+        targetElement.querySelector('h1')!.textContent = this.name;
+      }
+    }
+  }
+}
+
+@withTemplate('<h1>Hello app</h1>', 'app');
+class HomeComponent {}
+```
