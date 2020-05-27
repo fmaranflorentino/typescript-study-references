@@ -45,3 +45,17 @@ const person = new Person();
 
 console.log(person);
 ```
+
+### useful decorators
+
+```ts
+function withTemplate(template: string, target: string) {
+  return function (_: Function) {
+    const targetElement = document.getElementById(target)!;
+    targetElement.innterHTML = template; 
+  }
+}
+
+@withTemplate('<h1>Hello app</h1>', 'app');
+class HomeComponent {}
+```
