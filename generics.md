@@ -76,3 +76,25 @@ class DataStorage<T extends string | number> {
 
 const textStorage = new DataStorage<string>();
 ```
+
+### Utility Types
+
+```ts
+interface CourseGoal {
+  title: string;
+  description: string;
+}
+
+function createCourseGoal (title: string, description: string): CourseGoal {
+  const courseGoal: Partial<CourseGoal> = {}
+  courseGoal.title = title;
+  courseGoal.description = description;
+
+  return courseGoal as CourseGoal;
+}
+```
+
+```ts
+const names: Readonly<string[]> = ['Flávio'];
+names.push('Jon'); // ERROR
+```
