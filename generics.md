@@ -28,3 +28,35 @@ function merge<T extends string | number, U extends Job | Role>(objA: T, objB: U
   return Object.assign(objA, objB);
 }
 ```
+
+Another example
+
+```ts
+interface Lenghy {
+  length: number;
+}
+
+function countAndDescribe<T extends Lenghy>(element: T): [T, string] {
+  let description =
+    element?.length > 0
+      ? element.length === 1
+        ? "Got 1 element."
+        : `Got ${element.length} elementns.`
+      : "Got no value.";
+
+  return [element, description];
+}
+```
+
+### Constraints - keyof
+
+```ts
+function extractAndConvert<T extends object, U extends keyof T>(
+  objt: T,
+  key: U
+) {
+  return obj[key];
+}
+
+extractAndConvert({ name: 'Flávio'}, 'name');
+```
