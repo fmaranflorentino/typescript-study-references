@@ -143,3 +143,7 @@ class Product {
 
 }
 ```
+
+## When do decorators execute ? 
+
+It not executes on runtime it executes when it's `defined` and decorators are not event listners . 
