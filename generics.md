@@ -58,5 +58,21 @@ function extractAndConvert<T extends object, U extends keyof T>(
   return obj[key];
 }
 
-extractAndConvert({ name: 'Flávio'}, 'name');
+extractAndConvert({ name: "Flávio" }, "name");
+```
+
+## Classes
+
+```ts
+class DataStorage<T extends string | number> {
+  private data: T[] = [];
+
+  addItem(item: T) {}
+
+  removeItem(item: T) {}
+
+  getItems(): T[] {}
+}
+
+const textStorage = new DataStorage<string>();
 ```
